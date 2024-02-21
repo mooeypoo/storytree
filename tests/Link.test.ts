@@ -6,6 +6,12 @@ describe('Link', () => {
     expect(link.getTitle()).toBe('Test');
   });
   
+  it('should create a new link without piece id', () => {
+    const link = new Link('Test');
+    expect(link.getTitle()).toBe('Test');
+    expect(link.getPieceId()).toBeUndefined;
+  });
+  
   it('should get the piece id', () => {
     const link = new Link('Test', 1);
     expect(link.getPieceId()).toBe(1);

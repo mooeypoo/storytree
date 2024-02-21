@@ -96,14 +96,20 @@ export class Piece {
    * @throws {Error} If the variant does not exist
    */
   removeVariant(name: string){
-    delete this.variants[name];
-
     if (this.variants[name] === undefined) {
       throw new Error('Variant does not exist');
     }
+
+    delete this.variants[name];
   }
 
-  addLink(title: string, piece_id: number){
+  addLink(title: string, piece_id?: number){
+    // Check if the link already exists
+    if (this.getLinkByTitle(title)) {
+      throw new Error('Link already exists');
+    }
+
+    piece_id = piece_id || -1;
     this.links.push(new Link(title, piece_id));
   }
 
@@ -113,6 +119,14 @@ export class Piece {
 
   removeLink(index: number){
     this.links.splice(index, 1);
+  }
+
+  getLinkByTitle(title: string){
+    for (let i = 0; i < this.links.length; i++){
+      if (this.links[i].getTitle() === title){
+        return this.links[i];
+      }
+    }
   }
 
   removeLinkByTitle(title: string){

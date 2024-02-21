@@ -3,11 +3,11 @@
  */
 export class Link {
   title: string;
-  piece_id: number;
+  piece_id?: number;
 
-  constructor(title: string, piece_id: number) {
+  constructor(title: string, piece_id?: number) {
     this.title = title;
-    this.piece_id = piece_id;
+    this.piece_id = piece_id || undefined;
   }
 
   getTitle() {
