@@ -14,7 +14,15 @@ export class Link {
     return this.title;
   }
 
+  getPieceId() {
+    return this.piece_id;
+  }
+
   editTitle(title: string) {
     this.title = title;
+  }
+
+  editPieceId(piece_id: number) {
+    this.piece_id = piece_id;
   }
 }

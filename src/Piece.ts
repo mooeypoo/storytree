@@ -10,7 +10,7 @@ export class Piece {
   variants: {
     [key:string]: Variant;
   };
-  content?: string;
+  links: Link[];
 
   /**
    * Instantiate a new piece with an empty
@@ -21,6 +21,7 @@ export class Piece {
    */
   constructor(id: number, content?: string){
     this.id = id;
+    this.links = [];
 
     // Instantiate with a new default variant
     this.variants = {
@@ -45,15 +46,32 @@ export class Piece {
   /**
    * Add a variant to this piece.
    *
-   * @param name Variant name
+   * @param [name] Variant name. If not provided, results in 'default'
    * @param [content] Variant content
    * @throws {Error} If the variant already exists
+   * @returns The new variant object
    */
-  addVariant(name: string, content?: string){
+  addVariant(name?: string, content?: string){
+    name = name || 'default';
     if (this.variants[name]) {
       throw new Error('Variant already exists');
     }
     this.variants[name] = new Variant(name, content);
+
+    return this.variants[name];
+  }
+
+  /**
+   * Connects an existing variant object to this piece.
+   *
+   * @param variant Variant object to add
+   * @throws {Error} If a variant with this name already exists
+   */
+  connectExistingVariant(variant: Variant){
+    if (this.variants[variant.getName()]) {
+      throw new Error('A Variant with this name already exists');
+    }
+    this.variants[variant.getName()] = variant;
   }
 
   /**
@@ -83,5 +101,30 @@ export class Piece {
     if (this.variants[name] === undefined) {
       throw new Error('Variant does not exist');
     }
+  }
+
+  addLink(title: string, piece_id: number){
+    this.links.push(new Link(title, piece_id));
+  }
+
+  getLinks(){
+    return this.links;
+  }
+
+  removeLink(index: number){
+    this.links.splice(index, 1);
+  }
+
+  removeLinkByTitle(title: string){
+    for (let i = 0; i < this.links.length; i++){
+      if (this.links[i].getTitle() === title){
+        this.links.splice(i, 1);
+        return;
+      }
+    }
+  }
+
+  emptyLinks() {
+    this.links = [];
   }
 }

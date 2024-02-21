@@ -1,9 +1,13 @@
+/**
+ * Defines a Variant object for pieces
+ * with their content.
+ */
 export class Variant {
   name: string;
   content: string;
 
-  constructor(name: string, content?: string){
-    this.name = name;
+  constructor(name?: string, content?: string){
+    this.name = name || 'default';
     this.content = content || '';
   }
 
