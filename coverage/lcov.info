@@ -1,5 +1,5 @@
 TN:
-SF:src/Link.ts
+SF:src/Objects/Link.ts
 FN:8,(anonymous_0)
 FN:13,(anonymous_1)
 FN:17,(anonymous_2)
@@ -27,7 +27,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:src/Piece.ts
+SF:src/Objects/Piece.ts
 FN:22,(anonymous_0)
 FN:42,(anonymous_1)
 FN:54,(anonymous_2)
@@ -109,7 +109,7 @@ BRF:12
 BRH:12
 end_of_record
 TN:
-SF:src/Variant.ts
+SF:src/Objects/Variant.ts
 FN:9,(anonymous_0)
 FN:14,(anonymous_1)
 FN:18,(anonymous_2)

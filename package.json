@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "docs": "typedoc src --out docs",
+    "docs": "typedoc --entryPointStrategy expand ./src --out docs",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",
     "test": "jest --config jest.config.js --coverage"

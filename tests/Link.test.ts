@@ -1,4 +1,4 @@
-import { Link } from '../src/Link';
+import { Link } from '../src/Objects/Link';
 
 describe('Link', () => {
   it('should create a new link', () => {

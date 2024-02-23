@@ -1,5 +1,5 @@
-import { Piece } from '../src/Piece';
-import { Variant } from '../src/Variant';
+import { Piece } from '../src/Objects/Piece';
+import { Variant } from '../src/Objects/Variant';
 
 describe('Piece', () => {
   it('should create a new piece without content', () => {

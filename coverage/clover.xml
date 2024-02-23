@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1708488909154" clover="3.2.0">
-  <project timestamp="1708488909154" name="All files">
+<coverage generated="1708489008373" clover="3.2.0">
+  <project timestamp="1708489008373" name="All files">
     <metrics statements="50" coveredstatements="50" conditionals="18" coveredconditionals="18" methods="21" coveredmethods="21" elements="89" coveredelements="89" complexity="0" loc="50" ncloc="50" packages="1" files="3" classes="3"/>
-    <file name="Link.ts" path="/home/moriel/code/projects/storytree/src/Link.ts">
+    <file name="Link.ts" path="/home/moriel/code/projects/storytree/src/Objects/Link.ts">
       <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
       <line num="4" count="2" type="stmt"/>
       <line num="9" count="16" type="stmt"/>
@@ -12,7 +12,7 @@
       <line num="22" count="1" type="stmt"/>
       <line num="26" count="1" type="stmt"/>
     </file>
-    <file name="Piece.ts" path="/home/moriel/code/projects/storytree/src/Piece.ts">
+    <file name="Piece.ts" path="/home/moriel/code/projects/storytree/src/Objects/Piece.ts">
       <metrics statements="37" coveredstatements="37" conditionals="12" coveredconditionals="12" methods="12" coveredmethods="12"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
@@ -52,7 +52,7 @@
       <line num="136" count="1" type="stmt"/>
       <line num="142" count="1" type="stmt"/>
     </file>
-    <file name="Variant.ts" path="/home/moriel/code/projects/storytree/src/Variant.ts">
+    <file name="Variant.ts" path="/home/moriel/code/projects/storytree/src/Objects/Variant.ts">
       <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
       <line num="5" count="2" type="stmt"/>
       <line num="10" count="33" type="cond" truecount="2" falsecount="0"/>

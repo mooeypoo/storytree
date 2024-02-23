@@ -1,4 +1,4 @@
-import { Variant } from '../src/Variant';
+import { Variant } from '../src/Objects/Variant';
 
 describe('Variant', () => {
   it('should create a new variant without name', () => {
