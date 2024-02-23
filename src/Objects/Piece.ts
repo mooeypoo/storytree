@@ -11,6 +11,7 @@ export class Piece {
     [key:string]: Variant;
   };
   links: Link[];
+  chosenLink?: Link;
 
   /**
    * Instantiate a new piece with an empty
@@ -22,6 +23,7 @@ export class Piece {
   constructor(id: number, content?: string){
     this.id = id;
     this.links = [];
+    this.chosenLink = undefined;
 
     // Instantiate with a new default variant
     this.variants = {
@@ -32,6 +34,32 @@ export class Piece {
     if (content){
       this.variants['default'].setContent(content);
     }
+  }
+
+  setChoice(link: Link){
+    this.chosenLink = link;
+  }
+
+  setChoiceByTitle(title: string){
+    const link = this.getLinkByTitle(title);
+
+    if (!link) {
+      throw new Error('This title does not match any of the available Link options');
+    }
+    this.setChoice(link);
+  }
+
+  setChoiceByIndex(index: number){
+    const link = this.getLinkByIndex(index);
+
+    if (!link) {
+      throw new Error('This index does not match any of the available Link options');
+    }
+    this.setChoice(link);
+  }
+
+  getChoice() {
+    return this.chosenLink;
   }
 
   /**
@@ -127,6 +155,10 @@ export class Piece {
         return this.links[i];
       }
     }
+  }
+
+  getLinkByIndex(index: number){
+    return this.links[index];
   }
 
   removeLinkByTitle(title: string){

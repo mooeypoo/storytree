@@ -1,18 +1,19 @@
-import { Piece } from "./Piece";
+import { Piece } from './Piece';
 
 export class Story {
   title: string;
   description?: string;
   author?: string;
-  pieces: { [key: number]: Piece };
+  allPieces: { [key: number]: Piece };
   startingPiece?: Piece;
+  
 
   constructor(title: string, description?: string, author?: string){
     this.title = title;
     this.description = description || undefined;
     this.author = author || undefined;
 
-    this.pieces = {};
+    this.allPieces = {};
     this.startingPiece = undefined;
   }
 
@@ -28,13 +29,29 @@ export class Story {
     return piece.id;
   }
 
+  getStartingPiece() {
+    return this.startingPiece;
+  }
+  /**
+   * Get the chosen story pieces. This will represent
+   * the choices made by the user, including a changed choice
+   * and will traverse the choices to the end.
+   *
+   * @returns The story piece by piece, with all used pieces in the sequence.
+   */
+  getStoryPieces() {
+
+
+
+  }
+
   /**
    * Add a piece to the story.
    * 
    * @param piece The piece to add
    */
   addPiece(piece: Piece){
-    this.pieces[piece.id] = piece;
+    this.allPieces[piece.id] = piece;
   }
 
   /**
@@ -43,12 +60,12 @@ export class Story {
    * @param id The ID of the piece
    * @returns The piece; undefined if not found
    */
-  getPiece(id: number){
-    return this.pieces[id];
+  getPieceById(id: number){
+    return this.allPieces[id];
   }
 
   getAllPieces() {
-    return this.pieces;
+    return this.allPieces;
   }
 
   /**
