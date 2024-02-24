@@ -6,7 +6,6 @@ export class Story {
   author?: string;
   allPieces: { [key: number]: Piece };
   startingPiece?: Piece;
-  
 
   constructor(title: string, description?: string, author?: string){
     this.title = title;

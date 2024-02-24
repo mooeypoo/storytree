@@ -1,90 +1,22 @@
 import { Piece } from '../src/Objects/Piece';
-import { Variant } from '../src/Objects/Variant';
 
 describe('Piece', () => {
   it('should create a new piece without content', () => {
     const piece = new Piece(1);
-    expect(piece.getVariant('default').getContent()).toBe('');
-  });
-
-  it('should get a default variant even if empty content', () => {
-    const piece = new Piece(1);
-    expect(piece.getVariant('default')).toBeDefined();
+    expect(piece.getContent()).toBe('');
   });
 
   it('should create a new piece with content', () => {
     const piece = new Piece(1, 'Test Content');
-    expect(piece.getVariant('default').getContent()).toBe('Test Content');
-  });
-  
-  it('should get a variant', () => {
-    const piece = new Piece(1);
-    piece.addVariant('Test');
-    expect(piece.getVariant('Test').getContent()).toBe('');
+    expect(piece.getContent()).toBe('Test Content');
   });
 
-  it('should add a variant', () => {
-    const piece = new Piece(1);
-    piece.addVariant('Test', 'Test Content');
-    expect(piece.getVariant('Test').getContent()).toBe('Test Content');
-  });
+  it('should edit the content', () => {
+    const piece = new Piece(1, 'Initial Content');
+    expect(piece.getContent()).toBe('Initial Content');  
 
-  it('should add a variant without information (default)', () => {
-    const piece = new Piece(1);
-    // Remove 'default' variant so they don't conflict
-    piece.removeVariant('default');
-
-    // Add empty variant
-    const variant = piece.addVariant();
-    expect(variant.getName()).toBe('default');
-  });
-
-  it('should not add a variant that already exists', () => {
-    const piece = new Piece(1);
-    piece.addVariant('Test');
-    expect(() => piece.addVariant('Test')).toThrow('Variant already exists');
-  });
-
-  it('should connect a variant to a piece', () => {
-    const piece = new Piece(1);
-    const variant = new Variant('Test', 'Test Content');
-    piece.connectExistingVariant(variant);
-    expect(piece.getVariant('Test').getContent()).toBe('Test Content');
-  });
-
-  it('should not connect a variant that already exists', () => {
-    const piece = new Piece(1);
-    const variant = new Variant('default', 'Test Content');
-    // Default always exists;
-    expect(() => piece.connectExistingVariant(variant)).toThrow('A Variant with this name already exists');
-  });
-
-  it('should edit a variant', () => {
-    const piece = new Piece(1);
-    piece.addVariant('Test', 'Initial Content');
-    expect(piece.getVariant('Test').getContent()).toBe('Initial Content');  
-
-    piece.editVariant('Test', 'Test Content');
-    expect(piece.getVariant('Test').getContent()).toBe('Test Content');
-  });
-
-  it('should not edit a variant that does not exist', () => {
-    const piece = new Piece(1);
-    expect(() => piece.editVariant('Test', 'Test Content')).toThrow('Variant does not exist');
-  });
-
-  it('should remove variant', () => {
-    const piece = new Piece(1);
-    piece.addVariant('Test', 'Initial Content');
-    expect(piece.getVariant('Test').getContent()).toBe('Initial Content');  
-
-    piece.removeVariant('Test');
-    expect(piece.getVariant('Test')).toBeUndefined;
-  });
-
-  it('should not remove a variant that does not exist', () => {
-    const piece = new Piece(1);
-    expect(() => piece.removeVariant('Test')).toThrow('Variant does not exist');
+    piece.setContent('Edited Content');
+    expect(piece.getContent()).toBe('Edited Content');
   });
 
   it('should add link', () => {
