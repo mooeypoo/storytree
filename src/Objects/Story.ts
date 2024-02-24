@@ -32,6 +32,36 @@ export class Story {
   getStartingPiece() {
     return this.startingPiece;
   }
+
+  /**
+   * Get all pieces of the story as a choice tree.
+   */
+  getTree() {
+    // const tree = {
+    //   [key: number]: {title: string, id: number, children: any[]}
+    // };
+    // const usedPiecesIDs: number[] = []; // This is to prevent recursion
+
+    // piece = this.startingPiece;
+    
+
+    // // const buildTree = (piece : Piece) => {
+    // if (usedPiecesIDs.includes(piece.id)) {
+    //     return;
+    // }
+    // usedPiecesIDs.push(piece.id);
+    // const links = piece.getLinks();
+    // tree[piece.id] = links.map(link => {
+    //     const nextPiece = this.story.getPieceById(link.getPieceId());
+    //     return {
+    //         title: link.getTitle(),
+    //         id: link.getPieceId(),
+    //         children: buildTree(nextPiece),
+    //     }
+    // });
+    // return tree[piece.id];
+  }
+
   /**
    * Get the chosen story pieces. This will represent
    * the choices made by the user, including a changed choice
