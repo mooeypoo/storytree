@@ -40,10 +40,21 @@ export class Piece {
     return this.content;
   }
 
+  /**
+   * Set the chosen link to another piece.
+   *
+   * @param link The link object to set as the choice
+   */
   setChoice(link: Link){
     this.chosenLink = link;
   }
 
+  /**
+   * Set the chosen link to another piece
+   * by using the link title
+   *
+   * @param title The title of the link to set as the choice
+   */
   setChoiceByTitle(title: string){
     const link = this.getLinkByTitle(title);
 
@@ -53,6 +64,12 @@ export class Piece {
     this.setChoice(link);
   }
 
+  /**
+   * Set the chosen link to another piece
+   * by using the link index
+   *
+   * @param index The index of the link to set as the choice
+   */
   setChoiceByIndex(index: number){
     const link = this.getLinkByIndex(index);
 
@@ -62,10 +79,21 @@ export class Piece {
     this.setChoice(link);
   }
 
+  /**
+   * Get the chosen link to another piece.
+   *
+   * @returns The chosen link
+   */
   getChoice() {
     return this.chosenLink;
   }
 
+  /**
+   * Add a link to another piece.
+   *
+   * @param title A title for the link
+   * @param piece_id The piece id to link to
+   */
   addLink(title: string, piece_id?: number){
     // Check if the link already exists
     if (this.getLinkByTitle(title)) {
@@ -76,14 +104,30 @@ export class Piece {
     this.links.push(new Link(title, piece_id));
   }
 
+  /**
+   * Get all available links from this piece.
+   *
+   * @returns An array of all links
+   */
   getLinks(){
     return this.links;
   }
 
+  /**
+   * Remove a link from this piece by its index.
+   *
+   * @param index Index of the link to remove
+   */
   removeLink(index: number){
     this.links.splice(index, 1);
   }
 
+  /**
+   * Get a link by its title.
+   *
+   * @param title Link title
+   * @returns Link object. Undefined if not found.
+   */
   getLinkByTitle(title: string){
     for (let i = 0; i < this.links.length; i++){
       if (this.links[i].getTitle() === title){
@@ -92,19 +136,19 @@ export class Piece {
     }
   }
 
+  /**
+   * Get a link by its index.
+   *
+   * @param index Link index
+   * @returns Link object. Undefined if not found.
+   */
   getLinkByIndex(index: number){
     return this.links[index];
   }
 
-  removeLinkByTitle(title: string){
-    for (let i = 0; i < this.links.length; i++){
-      if (this.links[i].getTitle() === title){
-        this.links.splice(i, 1);
-        return;
-      }
-    }
-  }
-
+  /**
+   * Remove all links from this piece
+   */
   emptyLinks() {
     this.links = [];
   }
