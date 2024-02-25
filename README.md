@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/mooeypoo/storytree/graph/badge.svg?token=9SX6TU8QSW)](https://codecov.io/gh/mooeypoo/storytree)
+
 Storytree
 =========
 
