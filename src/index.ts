@@ -18,15 +18,11 @@ export class Storytree {
         }
     }
 
+    /* Traversing the story tree */
+
     getStartingStoryNode() {
         return this.story.getStartingStoryNode();
     }
-
-    // /**
-    //  * Get all nodes of the story as a choice tree.
-    //  */
-    // getTree() {
-    // }
 
     /**
      * Get all nodes of the story
@@ -41,15 +37,25 @@ export class Storytree {
      * Get the chosen nodes of the story.
      * @returns The content of the story, as chosen by the user
      */
-    getContent() {
-        let node = this.story.getStartingStoryNode();
+    getContentNodes() {
+        let node = this.story.getStartingStoryNode() || undefined;
         const all = [];
-        while (node?.getChoice()) {
-            node = this.story.getStoryNodeById(node.getChoice()?.getStoryNodeId()!);
+        while (node?.getChoice()?.getNode() !== undefined {
             all.push(node);
+            node = node?.getChoice()?.getNode();
         }
     
         return all;
+    }
+
+    /**
+     * Get the content of the story, in text
+     * @return The text content of the story, as chosen by the user
+     */
+    getContentText() {
+        return this.getContentNodes().map(
+            node => node.getContent()
+        ).join("\n\n");
     }
 }
 
