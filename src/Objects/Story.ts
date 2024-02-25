@@ -1,109 +1,106 @@
-import { Piece } from './Piece';
+import { StoryNode } from './StoryNode';
 
 export class Story {
   title: string;
   description?: string;
   author?: string;
-  allPieces: { [key: number]: Piece };
-  startingPiece?: Piece;
+  allStoryNodes: { [key: number]: StoryNode };
+  startingStoryNode?: StoryNode;
 
   constructor(title: string, description?: string, author?: string){
     this.title = title;
     this.description = description || undefined;
     this.author = author || undefined;
 
-    this.allPieces = {};
-    this.startingPiece = undefined;
+    this.allStoryNodes = {};
+    this.startingStoryNode = undefined;
   }
 
   /**
-   * Start the story. Create a new piece and set it as the start.
+   * Start the story. Create a new node and set it as the start.
    * 
-   * @returns The ID of the new piece
+   * @returns The ID of the new node
    */
   start() {
-    const piece = new Piece(1);
-    this.setStartPiece(piece);
-    this.addPiece(piece);
-    return piece.id;
+    const node = new StoryNode(1);
+    this.setStartStoryNode(node);
+    this.addStoryNode(node);
+    return node.id;
   }
 
-  getStartingPiece() {
-    return this.startingPiece;
+  getStartingStoryNode() {
+    return this.startingStoryNode;
   }
 
   /**
-   * Get all pieces of the story as a choice tree.
+   * Get all nodes of the story as a choice tree.
    */
   getTree() {
     // const tree = {
     //   [key: number]: {title: string, id: number, children: any[]}
     // };
-    // const usedPiecesIDs: number[] = []; // This is to prevent recursion
+    // const usedStoryNodesIDs: number[] = []; // This is to prevent recursion
 
-    // piece = this.startingPiece;
+    // node = this.startingStoryNode;
     
 
-    // // const buildTree = (piece : Piece) => {
-    // if (usedPiecesIDs.includes(piece.id)) {
+    // // const buildTree = (node : StoryNode) => {
+    // if (usedStoryNodesIDs.includes(node.id)) {
     //     return;
     // }
-    // usedPiecesIDs.push(piece.id);
-    // const links = piece.getLinks();
-    // tree[piece.id] = links.map(link => {
-    //     const nextPiece = this.story.getPieceById(link.getPieceId());
+    // usedStoryNodesIDs.push(node.id);
+    // const links = node.getLinks();
+    // tree[node.id] = links.map(link => {
+    //     const nextStoryNode = this.story.getStoryNodeById(link.getStoryNodeId());
     //     return {
     //         title: link.getTitle(),
-    //         id: link.getPieceId(),
-    //         children: buildTree(nextPiece),
+    //         id: link.getStoryNodeId(),
+    //         children: buildTree(nextStoryNode),
     //     }
     // });
-    // return tree[piece.id];
+    // return tree[node.id];
   }
 
   /**
-   * Get the chosen story pieces. This will represent
+   * Get the chosen story. This will represent
    * the choices made by the user, including a changed choice
    * and will traverse the choices to the end.
    *
-   * @returns The story piece by piece, with all used pieces in the sequence.
+   * @returns An array of the chosen content of the story
    */
-  getStoryPieces() {
-
-
-
+  getStoryContent() {
   }
 
   /**
-   * Add a piece to the story.
+   * Add a node to the story.
    * 
-   * @param piece The piece to add
+   * @param node The node to add
    */
-  addPiece(piece: Piece){
-    this.allPieces[piece.id] = piece;
+  addStoryNode(node: StoryNode){
+    this.allStoryNodes[node.id] = node;
   }
 
   /**
-   * Get a piece by its ID.
+   * Get a node by its ID.
    * 
-   * @param id The ID of the piece
-   * @returns The piece; undefined if not found
+   * @param id The ID of the node
+   * @returns The node; undefined if not found
    */
-  getPieceById(id: number){
-    return this.allPieces[id];
+  getStoryNodeById(id: number){
+    return this.allStoryNodes[id];
   }
 
-  getAllPieces() {
-    return this.allPieces;
+  getAllStoryNodes() {
+    return this.allStoryNodes;
   }
 
   /**
-   * Set the starting piece.
+   * Set the starting node.
    *
-   * @param piece Piece to set
+   * @param node StoryNode to set
    */
-  setStartPiece(piece: Piece){
-    this.startingPiece = piece;
+  setStartStoryNode(node: StoryNode){
+    this.startingStoryNode = node;
   }
 
   /**

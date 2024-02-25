@@ -1,18 +1,18 @@
 import { Link } from './Link';
 
 /**
- * A piece of content and a collection of links to other pieces.
+ * A node of content and a collection of links to other nodes.
  */
-export class Piece {
+export class StoryNode {
   id: number;
   content: string;
   links: Link[];
   chosenLink?: Link;
 
   /**
-   * Instantiate a new piece
+   * Instantiate a new node
    *
-   * @param id The unique identifier for this piece
+   * @param id The unique identifier for this node
    * @param [content] The content for the default variant
    */
   constructor(id: number, content?: string){
@@ -22,8 +22,12 @@ export class Piece {
     this.chosenLink = undefined;
   }
 
+  getId() {
+    return this.id;
+  }
+
   /**
-   * Set the content for this piece.
+   * Set the content for this node.
    *
    * @param content Content to set
    */
@@ -32,16 +36,16 @@ export class Piece {
   }
 
   /**
-   * Get the content for this piece.
+   * Get the content for this node.
    *
-   * @returns The content of this piece
+   * @returns The content of this node
    */
   getContent(){
     return this.content;
   }
 
   /**
-   * Set the chosen link to another piece.
+   * Set the chosen link to another node.
    *
    * @param link The link object to set as the choice
    */
@@ -50,7 +54,7 @@ export class Piece {
   }
 
   /**
-   * Set the chosen link to another piece
+   * Set the chosen link to another node
    * by using the link title
    *
    * @param title The title of the link to set as the choice
@@ -65,7 +69,7 @@ export class Piece {
   }
 
   /**
-   * Set the chosen link to another piece
+   * Set the chosen link to another node
    * by using the link index
    *
    * @param index The index of the link to set as the choice
@@ -80,7 +84,7 @@ export class Piece {
   }
 
   /**
-   * Get the chosen link to another piece.
+   * Get the chosen link to another node.
    *
    * @returns The chosen link
    */
@@ -89,23 +93,23 @@ export class Piece {
   }
 
   /**
-   * Add a link to another piece.
+   * Add a link to another node.
    *
    * @param title A title for the link
-   * @param piece_id The piece id to link to
+   * @param node The node to link to
    */
-  addLink(title: string, piece_id?: number){
+  addLink(title: string, node?: StoryNode){
     // Check if the link already exists
     if (this.getLinkByTitle(title)) {
       throw new Error('Link already exists');
     }
 
-    piece_id = piece_id || -1;
-    this.links.push(new Link(title, piece_id));
+    node = node || undefined;
+    this.links.push(new Link(title, node));
   }
 
   /**
-   * Get all available links from this piece.
+   * Get all available links from this node.
    *
    * @returns An array of all links
    */
@@ -114,7 +118,7 @@ export class Piece {
   }
 
   /**
-   * Remove a link from this piece by its index.
+   * Remove a link from this node by its index.
    *
    * @param index Index of the link to remove
    */
@@ -147,7 +151,7 @@ export class Piece {
   }
 
   /**
-   * Remove all links from this piece
+   * Remove all links from this node
    */
   emptyLinks() {
     this.links = [];

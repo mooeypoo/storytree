@@ -1,28 +1,34 @@
+import { StoryNode } from "./StoryNode";
+
 /**
- * A link to another piece.
+ * A link to another story node.
  */
 export class Link {
   title: string;
-  piece_id?: number;
+  node?: StoryNode;
 
-  constructor(title: string, piece_id?: number) {
+  constructor(title: string, node?: StoryNode) {
     this.title = title;
-    this.piece_id = piece_id || undefined;
+    this.node = node || undefined;
   }
 
   getTitle() {
     return this.title;
   }
 
-  getPieceId() {
-    return this.piece_id;
+  getNode() {
+    return this.node;
+  }
+
+  getNodeId() {
+    return this.node?.getId();
   }
 
   editTitle(title: string) {
     this.title = title;
   }
 
-  editPieceId(piece_id: number) {
-    this.piece_id = piece_id;
+  editNode(node: StoryNode) {
+    this.node = node;
   }
 }

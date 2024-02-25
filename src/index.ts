@@ -18,35 +18,35 @@ export class Storytree {
         }
     }
 
-    getStartingPiece() {
-        return this.story.getStartingPiece();
+    getStartingStoryNode() {
+        return this.story.getStartingStoryNode();
     }
 
     // /**
-    //  * Get all pieces of the story as a choice tree.
+    //  * Get all nodes of the story as a choice tree.
     //  */
     // getTree() {
     // }
 
     /**
-     * Get all pieces of the story
+     * Get all nodes of the story
      *
-     * @returns An array of all pieces in the story
+     * @returns An array of all nodes in the story
      */
     getAll() {
-        return this.story.getAllPieces();
+        return this.story.getAllStoryNodes();
     }
 
     /**
-     * Get the chosen pieces of the story.
+     * Get the chosen nodes of the story.
      * @returns The content of the story, as chosen by the user
      */
     getContent() {
-        let piece = this.story.getStartingPiece();
+        let node = this.story.getStartingStoryNode();
         const all = [];
-        while (piece?.getChoice()) {
-            piece = this.story.getPieceById(piece.getChoice()?.getPieceId()!);
-            all.push(piece);
+        while (node?.getChoice()) {
+            node = this.story.getStoryNodeById(node.getChoice()?.getStoryNodeId()!);
+            all.push(node);
         }
     
         return all;
